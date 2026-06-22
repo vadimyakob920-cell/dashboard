@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ClientDetailsModal from "./ClientDetailsModal";
-import axios from "axios";
 
 export default function ClientTable({ clients }) {
   const [selected, setSelected] = useState(null);
