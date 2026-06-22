@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = 'https://sense-backend-0589.onrender.com';
+const API = "https://sense-backend-0589.onrender.com";
 
 export const fetchClients = async () => {
   const res = await axios.get(`${API}/clients`);

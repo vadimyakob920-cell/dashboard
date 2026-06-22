@@ -7,6 +7,7 @@ export default function ClientTable({ clients }) {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://sense-backend-0589.onrender.com/clients/${id}`);
+      console.log("axios error ???")
       window.location.reload(); // simple refresh (we can optimize later)
     } catch (err) {
       console.error("Delete failed", err);
@@ -47,13 +48,6 @@ export default function ClientTable({ clients }) {
                 >
                   <span style={{ marginRight: 6 }}>👁</span>
                   View
-                </button>
-                  {/* DELETE */}
-                <button
-                  onClick={() => handleDelete(c._id)}
-                  style={styles.deleteBtn}
-                >
-                  🗑 Delete
                 </button>
               </td>
             </tr>
