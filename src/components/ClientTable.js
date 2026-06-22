@@ -3,6 +3,14 @@ import ClientDetailsModal from "./ClientDetailsModal";
 
 export default function ClientTable({ clients }) {
   const [selected, setSelected] = useState(null);
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`https://sense-backend-0589.onrender.com/clients/${id}`);
+      window.location.reload(); // simple refresh (we can optimize later)
+    } catch (err) {
+      console.error("Delete failed", err);
+    }
+  };
 
   return (
     <div>
@@ -15,6 +23,7 @@ export default function ClientTable({ clients }) {
             <th>HadRun</th>
             <th>Blocked</th>
             <th>Actions</th>
+            <th>Created At</th>
           </tr>
         </thead>
 
@@ -27,6 +36,9 @@ export default function ClientTable({ clients }) {
               <td>{c.hadRun ? "Yes" : "No"}</td>
               <td>{c.blocked ? "Yes" : "No"}</td>
               <td>
+                {new Date(c.createdAt).toLocaleString()}
+              </td>
+              <td>
                 <button
                   onClick={() => setSelected(c)}
                   style={styles.viewBtn}
@@ -34,6 +46,13 @@ export default function ClientTable({ clients }) {
                 >
                   <span style={{ marginRight: 6 }}>👁</span>
                   View
+                </button>
+                  {/* DELETE */}
+                <button
+                  onClick={() => handleDelete(c._id)}
+                  style={styles.deleteBtn}
+                >
+                  🗑 Delete
                 </button>
               </td>
             </tr>
@@ -69,5 +88,17 @@ const styles = {
     alignItems: "center",
     gap: "4px",
     transition: "all 0.2s ease",
-  }
+  },
+  deleteBtn: {
+  background: "linear-gradient(135deg, #ef4444, #b91c1c)",
+  color: "white",
+  border: "none",
+  padding: "6px 10px",
+  borderRadius: "8px",
+  cursor: "pointer",
+  fontSize: "12px",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "4px",
+},
 };
