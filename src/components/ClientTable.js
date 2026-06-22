@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ClientDetailsModal from "./ClientDetailsModal";
+import axios from "axios";
 
 export default function ClientTable({ clients }) {
   const [selected, setSelected] = useState(null);
@@ -22,8 +23,8 @@ export default function ClientTable({ clients }) {
             <th>Email</th>
             <th>HadRun</th>
             <th>Blocked</th>
-            <th>Actions</th>
             <th>Created At</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
