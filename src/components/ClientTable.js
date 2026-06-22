@@ -4,15 +4,15 @@ import axios from "axios";
 
 export default function ClientTable({ clients }) {
   const [selected, setSelected] = useState(null);
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`https://sense-backend-0589.onrender.com/clients/${id}`);
-      console.log("axios error ???")
-      window.location.reload(); // simple refresh (we can optimize later)
-    } catch (err) {
-      console.error("Delete failed", err);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await axios.delete(`https://sense-backend-0589.onrender.com/clients/${id}`);
+  //     console.log("axios error ???")
+  //     window.location.reload(); // simple refresh (we can optimize later)
+  //   } catch (err) {
+  //     console.error("Delete failed", err);
+  //   }
+  // };
 
   return (
     <div>
@@ -83,17 +83,5 @@ const styles = {
     alignItems: "center",
     gap: "4px",
     transition: "all 0.2s ease",
-  },
-  deleteBtn: {
-  background: "linear-gradient(135deg, #ef4444, #b91c1c)",
-  color: "white",
-  border: "none",
-  padding: "6px 10px",
-  borderRadius: "8px",
-  cursor: "pointer",
-  fontSize: "12px",
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "4px",
-},
+  }
 };
