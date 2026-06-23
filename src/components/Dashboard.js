@@ -48,15 +48,6 @@ export default function Dashboard() {
   return (
     <div style={styles.page}>
 
-      {/* 🔥 TOP BAR (Logout moved here) */}
-      <div style={styles.topBar}>
-        <h4 style={{ margin: 0 }}>Dashboard</h4>
-
-        <button className="btn btn-danger btn-sm" onClick={logout}>
-          Logout
-        </button>
-      </div>
-
       <Header
         total={clients.length}
         active={clients.filter((c) => c.hadRun).length}
@@ -85,6 +76,10 @@ export default function Dashboard() {
           style={styles.btn}
         >
           Next
+        </button>
+
+        <button className="btn btn-danger btn-sm" onClick={logout} style={{ marginLeft: "auto" }}>
+          Logout
         </button>
       </div>
 
@@ -126,10 +121,11 @@ const styles = {
 
   pagination: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: "12px",
     marginTop: "15px",
+    padding: "0 20px",
   },
 
   btn: {
